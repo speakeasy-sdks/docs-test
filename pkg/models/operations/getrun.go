@@ -7,13 +7,9 @@ import (
 	"test/pkg/models/shared"
 )
 
-type GetRunQueryParams struct {
+type GetRunRequest struct {
 	// ID of the run to retrieve.
 	ID string `queryParam:"style=form,explode=true,name=id"`
-}
-
-type GetRunRequest struct {
-	QueryParams GetRunQueryParams
 }
 
 type GetRunResponse struct {

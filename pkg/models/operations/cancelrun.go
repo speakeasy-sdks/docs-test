@@ -4,13 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"test/pkg/models/shared"
 )
-
-type CancelRunRequest struct {
-	// CancelRunRequest
-	Request shared.ApiextCancelRunRequest `request:"mediaType=application/json"`
-}
 
 type CancelRunResponse struct {
 	ContentType string

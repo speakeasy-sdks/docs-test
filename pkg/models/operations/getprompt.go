@@ -7,13 +7,9 @@ import (
 	"test/pkg/models/shared"
 )
 
-type GetPromptQueryParams struct {
+type GetPromptRequest struct {
 	// ID of the prompt to retrieve.
 	ID string `queryParam:"style=form,explode=true,name=id"`
-}
-
-type GetPromptRequest struct {
-	QueryParams GetPromptQueryParams
 }
 
 type GetPromptResponse struct {
