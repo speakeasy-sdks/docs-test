@@ -16,6 +16,10 @@ const (
 	ApiextParameterComponentEnumTextarea  ApiextParameterComponentEnum = "textarea"
 )
 
+func (e ApiextParameterComponentEnum) ToPointer() *ApiextParameterComponentEnum {
+	return &e
+}
+
 func (e *ApiextParameterComponentEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -51,6 +55,10 @@ const (
 	ApiextParameterTypeEnumMap       ApiextParameterTypeEnum = "map"
 	ApiextParameterTypeEnumObject    ApiextParameterTypeEnum = "object"
 )
+
+func (e ApiextParameterTypeEnum) ToPointer() *ApiextParameterTypeEnum {
+	return &e
+}
 
 func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string

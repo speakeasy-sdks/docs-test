@@ -30,6 +30,10 @@ const (
 	ApiextPermissionRoleIDEnumGroupAdmin       ApiextPermissionRoleIDEnum = "group_admin"
 )
 
+func (e ApiextPermissionRoleIDEnum) ToPointer() *ApiextPermissionRoleIDEnum {
+	return &e
+}
+
 func (e *ApiextPermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

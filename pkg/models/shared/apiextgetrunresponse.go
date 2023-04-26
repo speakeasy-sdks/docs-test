@@ -15,6 +15,10 @@ const (
 	ApiextGetRunResponseRuntimeEnumWorkflow ApiextGetRunResponseRuntimeEnum = "workflow"
 )
 
+func (e ApiextGetRunResponseRuntimeEnum) ToPointer() *ApiextGetRunResponseRuntimeEnum {
+	return &e
+}
+
 func (e *ApiextGetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -42,6 +46,10 @@ const (
 	ApiextGetRunResponseStatusEnumFailed     ApiextGetRunResponseStatusEnum = "Failed"
 	ApiextGetRunResponseStatusEnumCancelled  ApiextGetRunResponseStatusEnum = "Cancelled"
 )
+
+func (e ApiextGetRunResponseStatusEnum) ToPointer() *ApiextGetRunResponseStatusEnum {
+	return &e
+}
 
 func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
