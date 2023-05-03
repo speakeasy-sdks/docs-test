@@ -33,8 +33,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ExecuteRunbookRequest{
+    ctx := context.Background()
+    res, err := s.Runbooks.Execute(ctx, operations.ExecuteRunbookRequest{
         ApiextExecuteRunbookRequest: shared.ApiextExecuteRunbookRequest{
             ID: "rbk20220120z15kl79",
             ParamValues: map[string]string{
@@ -46,9 +46,7 @@ func main() {
             Slug: sdk.String("hello_world"),
         },
         EnvSlug: sdk.String("dolorum"),
-    }
-
-    res, err := s.Runbooks.Execute(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -21,20 +21,20 @@ func (e ApiextParameterComponentEnum) ToPointer() *ApiextParameterComponentEnum 
 }
 
 func (e *ApiextParameterComponentEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "":
 		fallthrough
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ApiextParameterComponentEnum(s)
+		*e = ApiextParameterComponentEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextParameterComponentEnum: %s", s)
+		return fmt.Errorf("invalid value for ApiextParameterComponentEnum: %v", v)
 	}
 }
 
@@ -61,11 +61,11 @@ func (e ApiextParameterTypeEnum) ToPointer() *ApiextParameterTypeEnum {
 }
 
 func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "any":
 		fallthrough
 	case "string":
@@ -89,10 +89,10 @@ func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ApiextParameterTypeEnum(s)
+		*e = ApiextParameterTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextParameterTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for ApiextParameterTypeEnum: %v", v)
 	}
 }
 

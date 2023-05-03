@@ -35,6 +35,7 @@ func newPrompts(defaultClient, securityClient HTTPClient, serverURL, language, s
 
 // Cancel - Cancel Prompt
 // Cancel a prompt.
+
 func (s *prompts) Cancel(ctx context.Context, request shared.ApiextCancelPromptRequest) (*operations.CancelPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/cancel"
@@ -90,6 +91,7 @@ func (s *prompts) Cancel(ctx context.Context, request shared.ApiextCancelPromptR
 
 // Get - Get Prompt
 // Get information about an existing prompt.
+
 func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) (*operations.GetPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/get"
@@ -139,6 +141,7 @@ func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) 
 
 // List - List Prompts
 // List prompts from an existing run.
+
 func (s *prompts) List(ctx context.Context, request operations.ListPromptsRequest) (*operations.ListPromptsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/list"
@@ -188,6 +191,7 @@ func (s *prompts) List(ctx context.Context, request operations.ListPromptsReques
 
 // Submit - Submit Prompt
 // Submit a prompt with a set of parameter values.
+
 func (s *prompts) Submit(ctx context.Context, request shared.ApiextSubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/submit"

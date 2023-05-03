@@ -20,18 +20,18 @@ func (e ApiextGetRunResponseRuntimeEnum) ToPointer() *ApiextGetRunResponseRuntim
 }
 
 func (e *ApiextGetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "standard":
 		fallthrough
 	case "workflow":
-		*e = ApiextGetRunResponseRuntimeEnum(s)
+		*e = ApiextGetRunResponseRuntimeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetRunResponseRuntimeEnum: %s", s)
+		return fmt.Errorf("invalid value for ApiextGetRunResponseRuntimeEnum: %v", v)
 	}
 }
 
@@ -52,11 +52,11 @@ func (e ApiextGetRunResponseStatusEnum) ToPointer() *ApiextGetRunResponseStatusE
 }
 
 func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "NotStarted":
 		fallthrough
 	case "Queued":
@@ -68,10 +68,10 @@ func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Failed":
 		fallthrough
 	case "Cancelled":
-		*e = ApiextGetRunResponseStatusEnum(s)
+		*e = ApiextGetRunResponseStatusEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetRunResponseStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for ApiextGetRunResponseStatusEnum: %v", v)
 	}
 }
 
