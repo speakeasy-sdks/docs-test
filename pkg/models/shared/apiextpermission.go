@@ -7,34 +7,34 @@ import (
 	"fmt"
 )
 
-// ApiextPermissionRoleIDEnum - Which role is assigned to this permission.
-type ApiextPermissionRoleIDEnum string
+// ApiextPermissionRoleID - Which role is assigned to this permission.
+type ApiextPermissionRoleID string
 
 const (
-	ApiextPermissionRoleIDEnumTeamAdmin        ApiextPermissionRoleIDEnum = "team_admin"
-	ApiextPermissionRoleIDEnumTeamDeveloper    ApiextPermissionRoleIDEnum = "team_developer"
-	ApiextPermissionRoleIDEnumTaskViewer       ApiextPermissionRoleIDEnum = "task_viewer"
-	ApiextPermissionRoleIDEnumTaskRequester    ApiextPermissionRoleIDEnum = "task_requester"
-	ApiextPermissionRoleIDEnumTaskExecuter     ApiextPermissionRoleIDEnum = "task_executer"
-	ApiextPermissionRoleIDEnumTaskAdmin        ApiextPermissionRoleIDEnum = "task_admin"
-	ApiextPermissionRoleIDEnumRunViewer        ApiextPermissionRoleIDEnum = "run_viewer"
-	ApiextPermissionRoleIDEnumRunbookViewer    ApiextPermissionRoleIDEnum = "runbook_viewer"
-	ApiextPermissionRoleIDEnumRunbookRequester ApiextPermissionRoleIDEnum = "runbook_requester"
-	ApiextPermissionRoleIDEnumRunbookExecuter  ApiextPermissionRoleIDEnum = "runbook_executer"
-	ApiextPermissionRoleIDEnumRunbookAdmin     ApiextPermissionRoleIDEnum = "runbook_admin"
-	ApiextPermissionRoleIDEnumSessionViewer    ApiextPermissionRoleIDEnum = "session_viewer"
-	ApiextPermissionRoleIDEnumSessionExecuter  ApiextPermissionRoleIDEnum = "session_executer"
-	ApiextPermissionRoleIDEnumSessionAdmin     ApiextPermissionRoleIDEnum = "session_admin"
-	ApiextPermissionRoleIDEnumResourceUser     ApiextPermissionRoleIDEnum = "resource_user"
-	ApiextPermissionRoleIDEnumDeployCreator    ApiextPermissionRoleIDEnum = "deploy_creator"
-	ApiextPermissionRoleIDEnumGroupAdmin       ApiextPermissionRoleIDEnum = "group_admin"
+	ApiextPermissionRoleIDTeamAdmin        ApiextPermissionRoleID = "team_admin"
+	ApiextPermissionRoleIDTeamDeveloper    ApiextPermissionRoleID = "team_developer"
+	ApiextPermissionRoleIDTaskViewer       ApiextPermissionRoleID = "task_viewer"
+	ApiextPermissionRoleIDTaskRequester    ApiextPermissionRoleID = "task_requester"
+	ApiextPermissionRoleIDTaskExecuter     ApiextPermissionRoleID = "task_executer"
+	ApiextPermissionRoleIDTaskAdmin        ApiextPermissionRoleID = "task_admin"
+	ApiextPermissionRoleIDRunViewer        ApiextPermissionRoleID = "run_viewer"
+	ApiextPermissionRoleIDRunbookViewer    ApiextPermissionRoleID = "runbook_viewer"
+	ApiextPermissionRoleIDRunbookRequester ApiextPermissionRoleID = "runbook_requester"
+	ApiextPermissionRoleIDRunbookExecuter  ApiextPermissionRoleID = "runbook_executer"
+	ApiextPermissionRoleIDRunbookAdmin     ApiextPermissionRoleID = "runbook_admin"
+	ApiextPermissionRoleIDSessionViewer    ApiextPermissionRoleID = "session_viewer"
+	ApiextPermissionRoleIDSessionExecuter  ApiextPermissionRoleID = "session_executer"
+	ApiextPermissionRoleIDSessionAdmin     ApiextPermissionRoleID = "session_admin"
+	ApiextPermissionRoleIDResourceUser     ApiextPermissionRoleID = "resource_user"
+	ApiextPermissionRoleIDDeployCreator    ApiextPermissionRoleID = "deploy_creator"
+	ApiextPermissionRoleIDGroupAdmin       ApiextPermissionRoleID = "group_admin"
 )
 
-func (e ApiextPermissionRoleIDEnum) ToPointer() *ApiextPermissionRoleIDEnum {
+func (e ApiextPermissionRoleID) ToPointer() *ApiextPermissionRoleID {
 	return &e
 }
 
-func (e *ApiextPermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextPermissionRoleID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -73,10 +73,10 @@ func (e *ApiextPermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
 	case "deploy_creator":
 		fallthrough
 	case "group_admin":
-		*e = ApiextPermissionRoleIDEnum(v)
+		*e = ApiextPermissionRoleID(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextPermissionRoleIDEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextPermissionRoleID: %v", v)
 	}
 }
 
@@ -84,7 +84,7 @@ type ApiextPermission struct {
 	// Which action this permission applies to.
 	Action *string `json:"action,omitempty"`
 	// Which role is assigned to this permission.
-	RoleID *ApiextPermissionRoleIDEnum `json:"roleID,omitempty"`
+	RoleID *ApiextPermissionRoleID `json:"roleID,omitempty"`
 	// ID of the group  this permission applies to if assigned to a group.
 	SubGroupID *string `json:"subGroupID,omitempty"`
 	// ID of the user this permission applies to if assigned directly to a user.

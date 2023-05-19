@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// ApiextParameterComponentEnum - Used to specify UI-only type modifiers
-type ApiextParameterComponentEnum string
+// ApiextParameterComponent - Used to specify UI-only type modifiers
+type ApiextParameterComponent string
 
 const (
-	ApiextParameterComponentEnumUnknown   ApiextParameterComponentEnum = ""
-	ApiextParameterComponentEnumEditorSQL ApiextParameterComponentEnum = "editor-sql"
-	ApiextParameterComponentEnumTextarea  ApiextParameterComponentEnum = "textarea"
+	ApiextParameterComponentUnknown   ApiextParameterComponent = ""
+	ApiextParameterComponentEditorSQL ApiextParameterComponent = "editor-sql"
+	ApiextParameterComponentTextarea  ApiextParameterComponent = "textarea"
 )
 
-func (e ApiextParameterComponentEnum) ToPointer() *ApiextParameterComponentEnum {
+func (e ApiextParameterComponent) ToPointer() *ApiextParameterComponent {
 	return &e
 }
 
-func (e *ApiextParameterComponentEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextParameterComponent) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,36 +31,36 @@ func (e *ApiextParameterComponentEnum) UnmarshalJSON(data []byte) error {
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ApiextParameterComponentEnum(v)
+		*e = ApiextParameterComponent(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextParameterComponentEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextParameterComponent: %v", v)
 	}
 }
 
-// ApiextParameterTypeEnum - Parameter data type.
-type ApiextParameterTypeEnum string
+// ApiextParameterType - Parameter data type.
+type ApiextParameterType string
 
 const (
-	ApiextParameterTypeEnumAny       ApiextParameterTypeEnum = "any"
-	ApiextParameterTypeEnumString    ApiextParameterTypeEnum = "string"
-	ApiextParameterTypeEnumBoolean   ApiextParameterTypeEnum = "boolean"
-	ApiextParameterTypeEnumUpload    ApiextParameterTypeEnum = "upload"
-	ApiextParameterTypeEnumInteger   ApiextParameterTypeEnum = "integer"
-	ApiextParameterTypeEnumFloat     ApiextParameterTypeEnum = "float"
-	ApiextParameterTypeEnumDate      ApiextParameterTypeEnum = "date"
-	ApiextParameterTypeEnumDatetime  ApiextParameterTypeEnum = "datetime"
-	ApiextParameterTypeEnumConfigvar ApiextParameterTypeEnum = "configvar"
-	ApiextParameterTypeEnumList      ApiextParameterTypeEnum = "list"
-	ApiextParameterTypeEnumMap       ApiextParameterTypeEnum = "map"
-	ApiextParameterTypeEnumObject    ApiextParameterTypeEnum = "object"
+	ApiextParameterTypeAny       ApiextParameterType = "any"
+	ApiextParameterTypeString    ApiextParameterType = "string"
+	ApiextParameterTypeBoolean   ApiextParameterType = "boolean"
+	ApiextParameterTypeUpload    ApiextParameterType = "upload"
+	ApiextParameterTypeInteger   ApiextParameterType = "integer"
+	ApiextParameterTypeFloat     ApiextParameterType = "float"
+	ApiextParameterTypeDate      ApiextParameterType = "date"
+	ApiextParameterTypeDatetime  ApiextParameterType = "datetime"
+	ApiextParameterTypeConfigvar ApiextParameterType = "configvar"
+	ApiextParameterTypeList      ApiextParameterType = "list"
+	ApiextParameterTypeMap       ApiextParameterType = "map"
+	ApiextParameterTypeObject    ApiextParameterType = "object"
 )
 
-func (e ApiextParameterTypeEnum) ToPointer() *ApiextParameterTypeEnum {
+func (e ApiextParameterType) ToPointer() *ApiextParameterType {
 	return &e
 }
 
-func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextParameterType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -89,17 +89,17 @@ func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ApiextParameterTypeEnum(v)
+		*e = ApiextParameterType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextParameterTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextParameterType: %v", v)
 	}
 }
 
 type ApiextParameter struct {
 	// Used to specify UI-only type modifiers
-	Component   *ApiextParameterComponentEnum `json:"component,omitempty"`
-	Constraints *ApiextConstraints            `json:"constraints,omitempty"`
+	Component   *ApiextParameterComponent `json:"component,omitempty"`
+	Constraints *ApiextConstraints        `json:"constraints,omitempty"`
 	// Optional default value for this parameter, used if not set.
 	Default interface{} `json:"default,omitempty"`
 	// Description for this parameter.
@@ -112,6 +112,6 @@ type ApiextParameter struct {
 	// Airplane automatically generates a slug when provided a parameter name.
 	Slug *string `json:"slug,omitempty"`
 	// Parameter data type.
-	Type   *ApiextParameterTypeEnum `json:"type,omitempty"`
-	Values *ApiextParameter         `json:"values,omitempty"`
+	Type   *ApiextParameterType `json:"type,omitempty"`
+	Values *ApiextParameter     `json:"values,omitempty"`
 }

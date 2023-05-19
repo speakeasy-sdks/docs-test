@@ -36,7 +36,6 @@ func newRuns(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 // Cancel - Cancel Run
 // Cancel a run.
 // Check on the status of your run with [/runs/get](/api/runs#runs-get).
-
 func (s *runs) Cancel(ctx context.Context, request shared.ApiextCancelRunRequest) (*operations.CancelRunResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/cancel"
@@ -53,6 +52,8 @@ func (s *runs) Cancel(ctx context.Context, request shared.ApiextCancelRunRequest
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "*/*")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -80,7 +81,6 @@ func (s *runs) Cancel(ctx context.Context, request shared.ApiextCancelRunRequest
 
 // Get - Cancel Run
 // Get information about an existing run.
-
 func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*operations.GetRunResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/get"
@@ -89,6 +89,8 @@ func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*oper
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
@@ -130,7 +132,6 @@ func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*oper
 
 // GetOutputs - Get Run Outputs
 // Get outputs from an existing run.
-
 func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequest) (*operations.GetOutputsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/getOutputs"
@@ -139,6 +140,8 @@ func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequ
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
@@ -179,7 +182,6 @@ func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequ
 }
 
 // List - List Runs
-
 func (s *runs) List(ctx context.Context, request operations.ListRunsRequest) (*operations.ListRunsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/list"
@@ -188,6 +190,8 @@ func (s *runs) List(ctx context.Context, request operations.ListRunsRequest) (*o
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)

@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-// ApiextGetRunResponseRuntimeEnum - Runtime that this run executed on.
-type ApiextGetRunResponseRuntimeEnum string
+// ApiextGetRunResponseRuntime - Runtime that this run executed on.
+type ApiextGetRunResponseRuntime string
 
 const (
-	ApiextGetRunResponseRuntimeEnumStandard ApiextGetRunResponseRuntimeEnum = "standard"
-	ApiextGetRunResponseRuntimeEnumWorkflow ApiextGetRunResponseRuntimeEnum = "workflow"
+	ApiextGetRunResponseRuntimeStandard ApiextGetRunResponseRuntime = "standard"
+	ApiextGetRunResponseRuntimeWorkflow ApiextGetRunResponseRuntime = "workflow"
 )
 
-func (e ApiextGetRunResponseRuntimeEnum) ToPointer() *ApiextGetRunResponseRuntimeEnum {
+func (e ApiextGetRunResponseRuntime) ToPointer() *ApiextGetRunResponseRuntime {
 	return &e
 }
 
-func (e *ApiextGetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextGetRunResponseRuntime) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,30 +28,30 @@ func (e *ApiextGetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
 	case "standard":
 		fallthrough
 	case "workflow":
-		*e = ApiextGetRunResponseRuntimeEnum(v)
+		*e = ApiextGetRunResponseRuntime(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetRunResponseRuntimeEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextGetRunResponseRuntime: %v", v)
 	}
 }
 
-// ApiextGetRunResponseStatusEnum - Status of this run.
-type ApiextGetRunResponseStatusEnum string
+// ApiextGetRunResponseStatus - Status of this run.
+type ApiextGetRunResponseStatus string
 
 const (
-	ApiextGetRunResponseStatusEnumNotStarted ApiextGetRunResponseStatusEnum = "NotStarted"
-	ApiextGetRunResponseStatusEnumQueued     ApiextGetRunResponseStatusEnum = "Queued"
-	ApiextGetRunResponseStatusEnumActive     ApiextGetRunResponseStatusEnum = "Active"
-	ApiextGetRunResponseStatusEnumSucceeded  ApiextGetRunResponseStatusEnum = "Succeeded"
-	ApiextGetRunResponseStatusEnumFailed     ApiextGetRunResponseStatusEnum = "Failed"
-	ApiextGetRunResponseStatusEnumCancelled  ApiextGetRunResponseStatusEnum = "Cancelled"
+	ApiextGetRunResponseStatusNotStarted ApiextGetRunResponseStatus = "NotStarted"
+	ApiextGetRunResponseStatusQueued     ApiextGetRunResponseStatus = "Queued"
+	ApiextGetRunResponseStatusActive     ApiextGetRunResponseStatus = "Active"
+	ApiextGetRunResponseStatusSucceeded  ApiextGetRunResponseStatus = "Succeeded"
+	ApiextGetRunResponseStatusFailed     ApiextGetRunResponseStatus = "Failed"
+	ApiextGetRunResponseStatusCancelled  ApiextGetRunResponseStatus = "Cancelled"
 )
 
-func (e ApiextGetRunResponseStatusEnum) ToPointer() *ApiextGetRunResponseStatusEnum {
+func (e ApiextGetRunResponseStatus) ToPointer() *ApiextGetRunResponseStatus {
 	return &e
 }
 
-func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextGetRunResponseStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -68,10 +68,10 @@ func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Failed":
 		fallthrough
 	case "Cancelled":
-		*e = ApiextGetRunResponseStatusEnum(v)
+		*e = ApiextGetRunResponseStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetRunResponseStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextGetRunResponseStatus: %v", v)
 	}
 }
 
@@ -102,11 +102,11 @@ type ApiextGetRunResponse struct {
 	Permissions []ApiextPermission `json:"permissions,omitempty"`
 	Resources   map[string]string  `json:"resources,omitempty"`
 	// Runtime that this run executed on.
-	Runtime *ApiextGetRunResponseRuntimeEnum `json:"runtime,omitempty"`
+	Runtime *ApiextGetRunResponseRuntime `json:"runtime,omitempty"`
 	// ID of the session this run was spawned from if triggered by a session.
 	SessionID *string `json:"sessionID,omitempty"`
 	// Status of this run.
-	Status *ApiextGetRunResponseStatusEnum `json:"status,omitempty"`
+	Status *ApiextGetRunResponseStatus `json:"status,omitempty"`
 	// When the run succeeded. Empty if this run did not succeed.
 	SucceededAt *string `json:"succeededAt,omitempty"`
 	// ID of the task this run was spawned from if triggered by a task.

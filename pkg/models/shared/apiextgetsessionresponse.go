@@ -7,24 +7,24 @@ import (
 	"fmt"
 )
 
-// ApiextGetSessionResponseStatusEnum - Status of this session.
-type ApiextGetSessionResponseStatusEnum string
+// ApiextGetSessionResponseStatus - Status of this session.
+type ApiextGetSessionResponseStatus string
 
 const (
-	ApiextGetSessionResponseStatusEnumPending    ApiextGetSessionResponseStatusEnum = "Pending"
-	ApiextGetSessionResponseStatusEnumActive     ApiextGetSessionResponseStatusEnum = "Active"
-	ApiextGetSessionResponseStatusEnumWaiting    ApiextGetSessionResponseStatusEnum = "Waiting"
-	ApiextGetSessionResponseStatusEnumSucceeded  ApiextGetSessionResponseStatusEnum = "Succeeded"
-	ApiextGetSessionResponseStatusEnumFailed     ApiextGetSessionResponseStatusEnum = "Failed"
-	ApiextGetSessionResponseStatusEnumCancelling ApiextGetSessionResponseStatusEnum = "Cancelling"
-	ApiextGetSessionResponseStatusEnumCancelled  ApiextGetSessionResponseStatusEnum = "Cancelled"
+	ApiextGetSessionResponseStatusPending    ApiextGetSessionResponseStatus = "Pending"
+	ApiextGetSessionResponseStatusActive     ApiextGetSessionResponseStatus = "Active"
+	ApiextGetSessionResponseStatusWaiting    ApiextGetSessionResponseStatus = "Waiting"
+	ApiextGetSessionResponseStatusSucceeded  ApiextGetSessionResponseStatus = "Succeeded"
+	ApiextGetSessionResponseStatusFailed     ApiextGetSessionResponseStatus = "Failed"
+	ApiextGetSessionResponseStatusCancelling ApiextGetSessionResponseStatus = "Cancelling"
+	ApiextGetSessionResponseStatusCancelled  ApiextGetSessionResponseStatus = "Cancelled"
 )
 
-func (e ApiextGetSessionResponseStatusEnum) ToPointer() *ApiextGetSessionResponseStatusEnum {
+func (e ApiextGetSessionResponseStatus) ToPointer() *ApiextGetSessionResponseStatus {
 	return &e
 }
 
-func (e *ApiextGetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *ApiextGetSessionResponseStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -43,10 +43,10 @@ func (e *ApiextGetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Cancelling":
 		fallthrough
 	case "Cancelled":
-		*e = ApiextGetSessionResponseStatusEnum(v)
+		*e = ApiextGetSessionResponseStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetSessionResponseStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for ApiextGetSessionResponseStatus: %v", v)
 	}
 }
 
@@ -71,7 +71,7 @@ type ApiextGetSessionResponse struct {
 	// ID of the runbook this session was spawned from if triggered from a runbook.
 	RunbookID *string `json:"runbookID,omitempty"`
 	// Status of this session.
-	Status *ApiextGetSessionResponseStatusEnum `json:"status,omitempty"`
+	Status *ApiextGetSessionResponseStatus `json:"status,omitempty"`
 	// ID of the team that owns this session.
 	TeamID *string `json:"teamID,omitempty"`
 	// When this session was updated.

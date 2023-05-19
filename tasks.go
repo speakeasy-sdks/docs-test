@@ -36,7 +36,6 @@ func newTasks(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 // Execute - Execute Task
 // Execute a task with a set of parameter values and receive a run ID to track the task's execution.
 // Check on the status of your newly created run with [/runs/get](/api/runs#runs-get).
-
 func (s *tasks) Execute(ctx context.Context, request operations.ExecuteTaskRequest) (*operations.ExecuteTaskResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/tasks/execute"
@@ -53,6 +52,8 @@ func (s *tasks) Execute(ctx context.Context, request operations.ExecuteTaskReque
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 

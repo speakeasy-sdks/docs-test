@@ -36,7 +36,6 @@ func newRunbooks(defaultClient, securityClient HTTPClient, serverURL, language, 
 // Execute - Execute Runbook
 // Execute a runbook and receive a session ID to track the runbook's execution.
 // Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
-
 func (s *runbooks) Execute(ctx context.Context, request operations.ExecuteRunbookRequest) (*operations.ExecuteRunbookResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runbooks/execute"
@@ -53,6 +52,8 @@ func (s *runbooks) Execute(ctx context.Context, request operations.ExecuteRunboo
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
